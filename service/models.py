@@ -1,4 +1,6 @@
 import re
+
+from django.forms import ValidationError
 from django.db import models
 
 from wagtail.core.models import Page
@@ -56,5 +58,21 @@ class ServicePage(Page):
         FieldPanel("service_image"),
         
     ]
+
+    def clean(self):
+        super().clean()
+
+        if self.internal_page and self.external_page : 
+            raise ValidationError({
+                'internal_page' : ValidationError('SVP, Sélectionner un lien interne OU un lien externe '),
+                'external_page' : ValidationError('SVP, Sélectionner un lien interne OU un lien externe ')
+            })
+
+        if not self.internal_page and not self.external_page : 
+            raise ValidationError({
+                'internal_page' : ValidationError('SVP, Ajouter un lien interne OU un lien externe '),
+                'external_page' : ValidationError('SVP, Ajouter un lien interne OU un lien externe ')
+            })
+      
       
     
