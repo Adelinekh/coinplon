@@ -1,3 +1,4 @@
+import re
 from django.db import models
 
 from wagtail.core.models import Page
@@ -12,6 +13,11 @@ class ServicesListingPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("subtitle")
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context =  super().get_context(request, *args, **kwargs)
+        context['services'] = ServicePage.objects.live().public()
+        return context
 
     
 

@@ -18,9 +18,9 @@
     </div>
     <div class="col-lg-6">
       <picture>
-        <img src="https://www.fillmurray.com/300/200" style='width:100%; height: auto;'>
+        {% image page.service_image fill-573x369  as sv_img %}
+        <img src="{{sv_img.url}}" style='width:100%; height: auto;'>
       </picture>
     </div>
-  </div>
-  
 {% endblock content %}
+
