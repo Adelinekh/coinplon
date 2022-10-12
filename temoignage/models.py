@@ -1,6 +1,8 @@
+import imp
 from django.db import models
+from wagtail.snippets.models import register_snippet
 
-# Create your models here.
+@register_snippet
 class Temoignage(models.Model):
     quote = models.TextField(
         max_length=500,

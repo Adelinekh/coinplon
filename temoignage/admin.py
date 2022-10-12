@@ -7,7 +7,7 @@ from .models import Temoignage
 class TemoignageAdmin(ModelAdmin):
     model = Temoignage 
     menu_label = "Témoignage"
-    menu_icon = "placeholder"
+    menu_icon = "site"
     menu_order = 290
     add_to_settings_menu =  False
     exclude_from_explorer = False
